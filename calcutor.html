@@ -6,44 +6,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        .main{
+
+            position: relative;
+            margin: auto;
+            width: 340px;
+            height: 100vh;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 10%;
+            padding: 0;
+        }
+        td{
+            width:calc( 340px / 4);
+            height: 80px;
+        }
         td:not(#input) {
             cursor: pointer;
+        }
+        #input{
+            height: 100px;11
+            text-align: right;
         }
     </style>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <td colspan="4" id="input">0</td>
-        </tr>
-        <tr>
-            <td>C</td>
-            <td>/</td>
-            <td>*</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td rowspan="2">+</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td rowspan="2">=</td>
-        </tr>
-        <tr>
-            <td colspan="2">0</td>
-            <td>.</td>
-        </tr>
-    </table>
+    <div class="main">
+        <table border="1">
+            <tr>
+                <td  colspan="4" id="input">0</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>/</td>
+                <td>*</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td rowspan="2">+</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td rowspan="2">=</td>
+            </tr>
+            <tr>
+                <td colspan="2">0</td>
+                <td>.</td>
+            </tr>
+        </table>
+    </div>
 
     <script>
         let input = document.getElementById("input");
@@ -68,18 +89,29 @@
         let addNumber = (number) => {
             if(number == "C"){
                 input.innerText = "0";
-            }
-            else if(number == "=" || number == "Enter"){
+            }else if(number == "=" || number == "Enter"){
                 input.innerText = eval(input.innerText);
-            }
-            else {
+            }else if(input.innerText.length < 20){
                 if(input.innerText == "0") {
                     input.innerText = number;
                 }
                 else {
-                    input.innerText += number;
+                    if( operator.includes(number)){
+                        if( operator.includes(input.innerText.substring( input.innerText.length-1))){
+                            let str = input.innerText.substring( 0,input.innerText.length-1);
+                            input.innerText = str + number;
+                        }else{
+                            input.innerText += number;
+    
+                        }
+                    }else{
+                        input.innerText += number;
+                    }
+
+                    
                 }
             }
+            
         }
     </script>
 </body>
