@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body{
+            background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
         .main{
-
             position: relative;
             margin: auto;
             width: 340px;
@@ -16,25 +18,51 @@
             font-size: 24px;
             margin-top: 10%;
             padding: 0;
+            
+        }
+        table{
+            border-collapse: collapse;
+            box-shadow: 5px 5px 5px rgb(136, 134, 134);
         }
         td{
             width:calc( 340px / 4);
             height: 80px;
         }
-        td:not(#input) {
+        td:not(#input):not(#sum){
             cursor: pointer;
+            background-color: #32CCBC;
+
+        }
+        td:not(#input):not(#sum){
+            cursor: pointer;
+            background-color: #32CCBC;
+            
         }
         #input{
-            height: 100px;11
+            height: 50px;
             text-align: right;
-        }
+            padding-right: 5px;
+            padding-bottom: 0;
+            /* background-color: rgb(48, 155, 165); */
+            background: linear-gradient(#81FFEF,#92FFC0);
+            }
+        #sum{
+            height: 60px;
+            text-align: right;
+            font-size: 36px;
+            padding-right: 5px;
+            background: linear-gradient(#92FFC0,#58CFFB);
+            }
     </style>
 </head>
 <body>
     <div class="main">
-        <table border="1">
+        <table>
             <tr>
                 <td  colspan="4" id="input">0</td>
+            </tr>
+            <tr>
+                <td  colspan="4" id="sum">0</td>
             </tr>
             <tr>
                 <td>C</td>
@@ -90,8 +118,8 @@
             if(number == "C"){
                 input.innerText = "0";
             }else if(number == "=" || number == "Enter"){
-                input.innerText = eval(input.innerText);
-            }else if(input.innerText.length < 20){
+                sum.innerText = eval(input.innerText);
+            }else if(input.innerText.length < 25){
                 if(input.innerText == "0") {
                     input.innerText = number;
                 }
