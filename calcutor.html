@@ -18,11 +18,15 @@
             font-size: 24px;
             margin-top: 10%;
             padding: 0;
+
             
         }
         table{
             border-collapse: collapse;
             box-shadow: 5px 5px 5px rgb(136, 134, 134);
+            background: linear-gradient(#92FFC0,#58CFFB);
+            border-radius: 10px;
+
         }
         td{
             width:calc( 340px / 4);
@@ -30,13 +34,8 @@
         }
         td:not(#input):not(#sum){
             cursor: pointer;
-            background-color: #32CCBC;
-
-        }
-        td:not(#input):not(#sum){
-            cursor: pointer;
-            background-color: #32CCBC;
-            
+            background-color:  rgba(50, 115, 220, 0.1);
+            border-radius: 50px;
         }
         #input{
             height: 50px;
@@ -44,14 +43,13 @@
             padding-right: 5px;
             padding-bottom: 0;
             /* background-color: rgb(48, 155, 165); */
-            background: linear-gradient(#81FFEF,#92FFC0);
             }
         #sum{
             height: 60px;
             text-align: right;
             font-size: 36px;
             padding-right: 5px;
-            background: linear-gradient(#92FFC0,#58CFFB);
+            border-bottom: 2px solid rgb(212, 248, 248);
             }
     </style>
 </head>
@@ -96,6 +94,7 @@
 
     <script>
         let input = document.getElementById("input");
+        let sum = document.getElementById("sum");
         let td = document.getElementsByTagName("td");
         let operator = ["+", "-", "*", "/", "Enter", "."];
 
@@ -117,6 +116,7 @@
         let addNumber = (number) => {
             if(number == "C"){
                 input.innerText = "0";
+                sum.innerText = "0";
             }else if(number == "=" || number == "Enter"){
                 sum.innerText = eval(input.innerText);
             }else if(input.innerText.length < 25){
